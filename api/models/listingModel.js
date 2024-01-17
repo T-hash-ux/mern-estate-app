@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const listingSchema = new mongoose.Schema(
     {
-        name:{
+        title:{
             type: String,
             required: true,
 
@@ -56,6 +56,6 @@ const listingSchema = new mongoose.Schema(
 
 
 
-const Listing = mongoose.model('Listing', listingSchema);
+const Listing = mongoose.model('listing', listingSchema);
 
 export default Listing;
