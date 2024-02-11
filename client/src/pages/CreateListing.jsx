@@ -14,10 +14,10 @@ export default function CreateListing() {
         description: '',
         address: '',
         type: 'rent',
-        bedrooms: 1,
-        bathrooms: 1,
+        bedrooms: 2,
+        bathrooms: 2,
         regularPrice: 50,
-        discountPrice: 0,
+        discountPrice: 50,
         offer: false,
         parking: false,
         furnished: false,
@@ -238,7 +238,7 @@ export default function CreateListing() {
                           type='number' 
                           id='bedrooms' 
                           min='1' 
-                          max='10' 
+                          max='500' 
                           required
                          className='p-3 border border-gray-300 rounded-lg' 
                          onChange={handleChange}
@@ -251,7 +251,7 @@ export default function CreateListing() {
                             type="number" 
                             id='bathrooms' 
                             min='1' 
-                            max='10' 
+                            max='10000000' 
                             required
                             className='p-3 border border-gray-300 rounded-lg'
                             onChange={handleChange}

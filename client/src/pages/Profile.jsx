@@ -26,8 +26,10 @@ export default function Profile() {
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
  
-//  console.log(filePerc);
-//  console.log(fileUploadError);
+// firebase storage
+// allow read;
+// allow write: if
+// request resource size < 
 
 
 useEffect(() => {
@@ -143,7 +145,27 @@ const handleChange = (e) => {
 
     }
 
-  }
+  };
+
+  const handleListingDelete = async (listingId) => {
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`,{
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+
+      setUserListings((prev) => 
+        prev.filter((listing) => listing._id !== listingId)
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+
+  };
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center 
@@ -200,7 +222,7 @@ const handleChange = (e) => {
        <input 
        type="password" 
        placeholder='password'
-      //  defaultValue={currentUser.password} 
+       defaultValue={currentUser.password} 
        id='password'
        className='border p-3 rounded-lg'
        onChange={handleChange} 
@@ -249,13 +271,14 @@ const handleChange = (e) => {
           className='h-16 w-16 object-contain' 
           />
         </Link>
-        <Link className='text-slate-700 font-semibold hover:underline truncate flex-1'to={`/listing/
-        ${listing._id}`}>
-
-          <p>{listing.title}</p>
+        <Link className='text-slate-700 font-semibold hover:underline truncate flex-1'
+        to={`/listing/${listing._id}`}
+        >
+          <p>{listing.title}</p> 
         </Link>
-        <div className='flex flex-col item-center'>
-          <button className='text-red-700 
+
+        <div className='flex flex-col item-center'> 
+          <button onClick={()=>handleListingDelete(listing._id)} className='text-red-700 
           uppercase'>Delete</button>
           <button className='text-green-700 
           uppercase'>Edit</button>
