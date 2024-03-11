@@ -281,7 +281,7 @@ export default function CreateListing() {
                             type='number' 
                             id='regularPrice' 
                             min='50' 
-                            max='100000' 
+                            max='1000000000000000000' 
                             required
                             className='p-3 border border-gray-300 rounded-lg'
                             onChange={handleChange}
@@ -365,7 +365,7 @@ export default function CreateListing() {
                     ))}
                 <button disabled={loading || uploading} className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 
                 disabled:opacity-80'>
-                    {loading ? 'Creating...' : 'Update listing'}
+                    {loading ? 'Updating...' : 'Update listing'}
                 </button>
                 {error && <p className='text-red-700 text-sm'>{error}</p>}
             </div>
